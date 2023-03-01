@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  wordpress:
+    image: wordpress
+    ports:
+      - "8008:80"
+    volumes:
+      - ./wp:/var/www/html
+    depends_on:
+      - db
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: example
+    volumes:
+      - ./db-data:/var/lib/mysql
+
+  ftp:
+    image: fauria/vsftpd
+    environment:
+      FTP_USER: ftpuser
+      FTP_PASS: ftppass
+    volumes:
+      - ./wp:/home/vsftpd/ftpuser
+    ports:
+      - "21:21"
+#### FTP creds #######
+###Host: localhost:21
+###User: ftpuser
+###Passwd: ftppass
