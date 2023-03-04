@@ -23,7 +23,6 @@ apt install curl -y
 apt install wget -y
 apt install links -y
 apt install links2 -y
-apt install whois -y
 apt install mc -y
 apt install dnsutils -y
 apt install whois -y
