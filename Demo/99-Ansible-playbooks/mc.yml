@@ -1,0 +1,8 @@
+- name: Install mc on web servers
+  hosts: webservers
+  become: true
+  tasks:
+    - name: Install MC
+      apt:
+        name: mc
+        state: present

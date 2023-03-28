@@ -1,0 +1,14 @@
+- name: Change web server2 haproxy
+  hosts: haproxy
+  become: true
+  tasks:
+    - name: ChangedWebServ2
+      replace:
+        path: /etc/haproxy/haproxy.cfg
+        regexp: 'server webserv2 .*'
+        replace: 'server webserv2 NEW_SERVER_IP_ADDRESS:80'
+    - name: Restart haproxy
+      systemd:
+        name: haproxy
+        state: restarted
+

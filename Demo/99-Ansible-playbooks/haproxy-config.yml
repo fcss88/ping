@@ -1,0 +1,36 @@
+- name: add config
+  hosts: haproxy
+  become: true
+  tasks:
+    - name: Add config files
+      lineinfile:
+        path: /etc/haproxy/haproxy.cfg
+        line: "{{ item }}"
+      with_items:
+        - "################ BEGIN CONFIG #######################"
+        - "listen stats"
+        - "\t\tbind 139.144.73.169:8080"
+        - "\t\tmode http"
+        - "\t\tlog global"
+        - "\t\tstats enable"
+        - "\t\tstats refresh 30s"
+        - "\t\tstats uri /haproxy_stats"
+        - "\t\tstats realm HAProxy\ Statistics"
+        - "\t\tstats auth admin:pass123"
+        - "\t\tstats admin if TRUE"
+        - ""
+        - "frontend webfront"
+        - "\t\tbind *:80"
+        - "\t\tbind *:443"
+        - "\t\tdefault_backend webback"
+        - ""
+        - "backend webback"
+        - "\t\tbalance roundrobin"
+        - "\t\t# optional leastconn balancing"
+        - "\t\tserver webserv1 143.42.56.235:80"
+        - "\t\tserver webserv2 143.42.26.53:80"
+        - "################ END CONFIG #######################"
+    - name: restart haproxy
+      systemd:
+        name: haproxy
+        state: restarted
