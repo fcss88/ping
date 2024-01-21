@@ -4,8 +4,7 @@ FROM alpine:latest
 EXPOSE 8888
 
 RUN apk upgrade --no-cache \
-    && apk add --no-cache tinyproxy \
-    && apk add --no-cache curl
+    && apk add --no-cache tinyproxy
 
 ENTRYPOINT [ "/usr/bin/tinyproxy", "-d" ]
 
