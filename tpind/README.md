@@ -5,6 +5,7 @@ Tinyproxy in Docker container.
 
 You can use it, but just change your ip in *tinyproxy.conf* (the 20th line)
 
+
 ## Files decrpiption
 
 - **Dockerfile** describe rules for docker container
@@ -14,6 +15,17 @@ You can use it, but just change your ip in *tinyproxy.conf* (the 20th line)
 - **start.sh** first start proxy, create logs
 
 - **tinyproxy.conf** configurable file for proxy, read docs 
+
+- **tpind-full-install.sh** one file project
+
+## one file usage 
+
+```bash
+  ./tpind-full-install.sh allowed_ip proxy port
+
+  # example
+  ./tpind-full-install.sh 192.168.14.88 3128
+```
 
 
 
