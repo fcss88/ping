@@ -5,4 +5,4 @@ mkdir tmpdir && cd tmpdir/ && touch file{001..029}.txt
 ### list of created files
 filelist=`ls`
 echo $filelist
-exit 1
+exit 0

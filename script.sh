@@ -13,4 +13,4 @@ rm -R /root/linux_dir2/
 ### delete files from directory older than 30 minutes
 find /backup/ -type f -mmin +30 -name "*.gz" -execdir rm -f {} \;
 
-exit 1
+exit 0

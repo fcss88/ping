@@ -16,5 +16,3 @@ $acl.SetAccessRule($accessRule)
 
 # Apply the updated ACL to the file
 Set-Acl "C:\example\file.txt" $acl
-
-

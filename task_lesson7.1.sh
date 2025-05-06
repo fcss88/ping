@@ -23,4 +23,4 @@ tar -cvpzf /backup/backup-$datefilename.tar.gz --absolute-names /root/tempdir
 rm -R /root/tempdir/
 ### delete backup-files older than 30 minutes
 find /backup/ -type f -mmin +30 -name "*.gz" -execdir rm -f {} \;
-exit 1
+exit 0
