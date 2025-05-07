@@ -1,0 +1,2 @@
+
+Get-WinEvent -LogName Security | Where-Object { $_.Id -eq 4625 } | Select-Object TimeCreated, Message | Format-Table -AutoSize

@@ -1,0 +1,1 @@
+Get-ScheduledTask | Select-Object TaskName, State | Format-Table -AutoSize

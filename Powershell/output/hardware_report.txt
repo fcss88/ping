@@ -1,0 +1,11 @@
+﻿=== Hardware Report ===
+Date: 2000-01-01 01:02:03
+
+CPU: cpu description
+Cores: 123
+Logical CPUs: 456
+
+RAM: 542 GB
+
+Disk C:: Total = 123.45 GB, Free = 67.89 GB
+Disk D:: Total = 76.54 GB, Free = 32.1 GB
