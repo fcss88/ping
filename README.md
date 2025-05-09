@@ -1,4 +1,4 @@
-# My protfolio 
+# My portfolio 
 ## maybe one day it will become my portfolio :)
 
 **hi**	
