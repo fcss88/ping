@@ -6,9 +6,8 @@
 
 
 ## Mannual for guest_share_quota.sh
-enable quota on ext4
 
-1. 
+1. enable quota on ext4
 ```
 sudo tune2fs -l /dev/sdX | grep 'Default mount options'
 ```
