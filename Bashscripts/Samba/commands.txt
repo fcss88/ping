@@ -1,0 +1,61 @@
+# restart samba (systemd)
+sudo systemctl restart smbd nmbd
+
+# Check service 
+systemctl status smbd
+systemctl status nmbd
+
+# Check smb.conf 
+testparm
+
+
+# create shared folder
+sudo mkdir -p /srv/samba/shared
+sudo chown nobody:nogroup /srv/samba/shared
+sudo chmod 0775 /srv/samba/shared
+
+# add section in smb.conf
+sudo bash -c 'cat >> /etc/samba/smb.conf' <<EOF
+
+[Shared]
+   path = /srv/samba/shared
+   browsable = yes
+   writable = yes
+   guest ok = yes
+   read only = no
+EOF
+
+# add system user
+sudo useradd sambauser -s /sbin/nologin
+
+# add Samba-password for user
+sudo smbpasswd -a sambauser
+
+# Enable Samba-user
+sudo smbpasswd -e sambauser
+
+# list of Samba-users
+sudo pdbedit -L
+
+# Check avaliable of shared-folder
+smbclient -L //localhost/Shared -N
+
+# Connect to shared folder via specific user
+smbclient //localhost/Shared -U sambauser
+
+# Mount shared folder via cifs
+sudo mount -t cifs //server-ip/Shared /mnt/samba \
+  -o username=sambauser,password=secret,vers=3.0
+
+# 13. Auto-mount via fstab (string for /etc/fstab)
+/mnt/samba  cifs  credentials=/etc/samba/cred,iocharset=utf8,vers=3.0  0  0
+
+# file /etc/samba/cred:
+username=sambauser
+password=secret
+
+# Check Logs
+sudo tail -f /var/log/samba/log.smbd
+
+# Check connect users
+sudo smbstatus
