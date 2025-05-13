@@ -9,5 +9,5 @@ if ($args.Count -eq 1) {
 }
 
 else {
-    Write-Output "Args error, need one parametr, for example: .\ArgPingHost.ps1 google.com"
+    Write-Output "Args error, need one parameter, for example: .\ArgPingHost.ps1 google.com"
 }

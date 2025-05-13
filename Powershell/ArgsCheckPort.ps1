@@ -14,5 +14,5 @@ $result = Test-NetConnection -ComputerName $hostName -Port $portNumber -Informat
 if ($result) {
     Write-Output "Port $portNumber opened on $hostName"
 } else {
-    Write-Output "Port $portNumber closed or unavaliable on $hostName"
+    Write-Output "Port $portNumber closed or unavailable on $hostName"
 }

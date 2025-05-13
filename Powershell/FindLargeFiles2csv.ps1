@@ -10,7 +10,7 @@ $directory = "C:\TEMP"
 #    Format-Table -AutoSize
 
 # change the output file name and path
-# dont forget to create the output directory first
+# don't forget to create the output directory first
 $outputCsv = "output\large_files.csv"
 
 $results = Get-ChildItem -Path $directory -Recurse -File -ErrorAction SilentlyContinue |
