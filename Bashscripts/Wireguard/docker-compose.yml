@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  wireguard:
+    build: .
+    container_name: wireguard
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Kyiv
+      - SERVERURL=your.domain.com # change to your domain or public IP
+      - SERVERPORT=51820
+      - PEERS=1
+      - PEERDNS=auto
+      - INTERNAL_SUBNET=10.13.13.0
+    volumes:
+      - ./config:/config
+      - ./keys:/keys
+      - ./clients:/clients
+    ports:
+      - "51820:51820/udp"
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+    restart: unless-stopped
