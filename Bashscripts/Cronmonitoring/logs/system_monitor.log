@@ -1,0 +1,21 @@
+==============START= 2025-05-24 22:38:49 ====================
+CPU Load: 0.00
+RAM Usage: 485MB / 11682MB
+Disk Usage: 1% used on /dev/sdc
+Open File Descriptors: 170
+Top 5 CPU-consuming processes:
+  PID  PPID CMD                         %CPU
+   11    10 -bash                        0.0
+   10     9 /init                        0.0
+    1     0 /init                        0.0
+    6     1 plan9 --control-socket 6 --  0.0
+    9     1 /init                        0.0
+Top 5 Memory-consuming processes:
+  PID  PPID CMD                         %MEM
+   11    10 -bash                        0.0
+  210   189 ps -eo pid,ppid,cmd,%mem --  0.0
+  189    11 /bin/bash ./system_monitori  0.0
+    1     0 /init                        0.0
+  211   189 head -n 6                    0.0
+=============FINISH= 2025-05-24 22:38:49 ====================
+

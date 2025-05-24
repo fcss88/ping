@@ -1,0 +1,2 @@
+timestamp,cpu_load,ram_used_mb,ram_total_mb,disk_used_percent,fd_count
+2025-05-24 22:30:03,0.00,478,11682,1,170
