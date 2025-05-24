@@ -56,7 +56,7 @@ Linux system with Bash
 [2025-05-14 22:38:07] Hostname: myserver | IP: 192.168.1.10 | Uptime: 3 hours | Packages: 842 | CPU Load: 0.15 | RAM Usage: 43.27% | Disk Free: 12G | Inodes Free: 842114
 ```
 
-###✅ CSV
+### ✅ CSV
 ```
 hostname,ip,uptime,packages,cpu_load,ram_usage,disk_free,inodes_free
 myserver,192.168.1.10,3 hours,842,0.15,43.27,12G,842114
