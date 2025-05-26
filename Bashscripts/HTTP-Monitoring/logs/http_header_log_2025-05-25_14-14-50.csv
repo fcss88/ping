@@ -1,0 +1,5 @@
+Timestamp,Site,Status_Code,Redirect_URL,SSL_Valid,SSL_Expiry_Days
+2025-05-25 14:14:50,https://google.com,200,"https://www.google.com/",VALID,58,
+2025-05-25 14:14:50,https://openai.com,403,"None",VALID,37,
+2025-05-25 14:14:51,http://example.com,200,"None",N/A,N/A
+2025-05-25 14:14:51,https://expired.badssl.com,,"None",EXPIRED,0,

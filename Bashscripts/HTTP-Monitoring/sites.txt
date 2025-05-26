@@ -1,0 +1,5 @@
+# List of sites to monitor
+https://google.com
+https://openai.com
+http://example.com
+https://expired.badssl.com

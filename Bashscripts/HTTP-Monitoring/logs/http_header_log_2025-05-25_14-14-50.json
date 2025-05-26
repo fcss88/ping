@@ -1,0 +1,6 @@
+[
+{"timestamp":"2025-05-25 14:14:50","site":"https://google.com","status_code":"200","redirect_url":"https://www.google.com/","ssl_status":"VALID,58","ssl_expiry_days":""},
+{"timestamp":"2025-05-25 14:14:50","site":"https://openai.com","status_code":"403","redirect_url":"None","ssl_status":"VALID,37","ssl_expiry_days":""},
+{"timestamp":"2025-05-25 14:14:51","site":"http://example.com","status_code":"200","redirect_url":"None","ssl_status":"N/A","ssl_expiry_days":"N/A"},
+{"timestamp":"2025-05-25 14:14:51","site":"https://expired.badssl.com","status_code":"","redirect_url":"None","ssl_status":"EXPIRED,0","ssl_expiry_days":""}
+]

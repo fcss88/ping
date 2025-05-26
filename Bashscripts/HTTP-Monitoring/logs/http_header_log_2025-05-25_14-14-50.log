@@ -1,0 +1,4 @@
+2025-05-25 14:14:50 [https://google.com] Status: 200, Redirect: https://www.google.com/, SSL: VALID,58 ( days)
+2025-05-25 14:14:50 [https://openai.com] Status: 403, Redirect: None, SSL: VALID,37 ( days)
+2025-05-25 14:14:51 [http://example.com] Status: 200, Redirect: None, SSL: N/A (N/A days)
+2025-05-25 14:14:51 [https://expired.badssl.com] Status: , Redirect: None, SSL: EXPIRED,0 ( days)
