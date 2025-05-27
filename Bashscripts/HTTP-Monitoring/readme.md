@@ -67,4 +67,4 @@ Then open your browser and navigate to http://localhost:8000 to browse and downl
 - Logs are saved with timestamps to avoid overwriting.
 
 ## simple web server interface 
-![screen](https://github.com/fcss88/ping/blob/main/Bashscripts\HTTP-Monitoring\webserver_screen.png)
+![screen](https://raw.githubusercontent.com/fcss88/ping/refs/heads/main/Bashscripts/HTTP-Monitoring/webserver_screen.png)
