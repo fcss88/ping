@@ -1,0 +1,34 @@
+stages:
+  - deploy
+
+variables:
+  # deploy path
+  DEPLOY_DIR: "/home/ubuntu/deploy/flask-docker-app"
+
+deploy_job:
+  stage: deploy
+  image: alpine:latest
+  before_script:
+    # install SSH client
+    - apk add --no-cache openssh-client
+    - ping -c 3 $SSH_HOST || echo "Ping failed"
+    - nc -zv $SSH_HOST 22 || echo "Port 22 not reachable"
+    # add ssh directory
+    - mkdir -p ~/.ssh
+    # Add private key 
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - echo "SSH_HOST is $SSH_HOST"
+    # Add gitlab.com to known_hosts
+    - ssh-keyscan -v -H $SSH_HOST >> ~/.ssh/known_hosts
+  script:
+    # connect to VPS and run comands
+    - ssh -vvv $SSH_USER@$SSH_HOST "
+        mkdir -p $DEPLOY_DIR &&
+        cd $DEPLOY_DIR &&
+        git pull origin main || git clone git@gitlab.com:fcss88/flask-docker-app.git . &&
+        docker-compose pull &&
+        docker-compose up -d --build
+      "
+  only:
+    - main

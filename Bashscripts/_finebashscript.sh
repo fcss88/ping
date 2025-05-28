@@ -15,3 +15,7 @@ set -euxo pipefail
 # set -o pipefail 
 # stop on error in a pipeline, write error message to stderr.
 # if u use 'some-command | true' and 'some-command' fails, the script will continue.
+
+
+# for debugging run:
+# $ bash -x yourscript.sh
