@@ -1,0 +1,39 @@
+global:
+  smtp_smarthost: 'localhost:25'
+  smtp_from: 'alertmanager@example.com'
+
+route:
+  receiver: 'default-receiver'
+
+receivers:
+  - name: 'default-receiver'
+    email_configs:
+      - to: 'admin@example.com'
+        send_resolved: true
+
+
+
+#global:
+#  resolve_timeout: 5m
+
+#route:
+#  receiver: 'default'
+
+#global:
+#  smtp_smarthost: 'smtp.gmail.com:587'
+#  smtp_from: 'your_email@gmail.com'
+#  smtp_auth_username: 'your_email@gmail.com'
+#  smtp_auth_password: 'your_app_password'  # Generated in Gmail as "App password"
+#  smtp_require_tls: true
+
+#route:
+#  receiver: 'email-me'
+
+#receivers:
+#  - name: 'email-me'
+#    email_configs:
+#      - to: 'your_email@gmail.com'
+
+#global:
+#  smtp_smarthost: 'localhost:25'
+#  smtp_from: 'alertmanager@example.com'
