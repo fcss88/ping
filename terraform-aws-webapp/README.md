@@ -385,7 +385,3 @@ Open source community contributions
 Need help? Open an issue or contact the maintainer.
 
 Found this useful? Give it a ⭐️ on GitHub!
-
-
-
-Copied from: Github portfolio for DevOps engineer - Claude - <https://claude.ai/chat/f196fbbf-3a52-4f95-bb9b-bcdec8f3e31f>
