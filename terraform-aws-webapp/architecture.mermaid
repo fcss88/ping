@@ -1,0 +1,100 @@
+graph TB
+    subgraph "Users"
+        U[Internet Users]
+    end
+
+    subgraph "AWS Cloud - VPC 10.0.0.0/16"
+        subgraph "Availability Zone 1"
+            subgraph "Public Subnet 10.0.1.0/24"
+                ALB1[Application Load Balancer]
+                NAT1[NAT Gateway 1]
+            end
+            
+            subgraph "Private Subnet 10.0.11.0/24"
+                EC2_1[EC2 Instance 1<br/>Web Server]
+            end
+            
+            subgraph "Database Subnet 10.0.21.0/24"
+                RDS1[RDS Primary<br/>MySQL/PostgreSQL]
+            end
+        end
+        
+        subgraph "Availability Zone 2"
+            subgraph "Public Subnet 10.0.2.0/24"
+                ALB2[Application Load Balancer]
+                NAT2[NAT Gateway 2]
+            end
+            
+            subgraph "Private Subnet 10.0.12.0/24"
+                EC2_2[EC2 Instance 2<br/>Web Server]
+            end
+            
+            subgraph "Database Subnet 10.0.22.0/24"
+                RDS2[RDS Standby<br/>Multi-AZ]
+            end
+        end
+        
+        IGW[Internet Gateway]
+        
+        subgraph "Storage"
+            S3_Static[S3 Bucket<br/>Static Assets]
+            S3_Logs[S3 Bucket<br/>Application Logs]
+        end
+        
+        subgraph "Monitoring"
+            CW[CloudWatch<br/>Logs & Metrics]
+            ASG[Auto Scaling Group<br/>Min:2 Max:4]
+        end
+    end
+    
+    U -->|HTTPS/HTTP| ALB1
+    U -->|HTTPS/HTTP| ALB2
+    ALB1 -->|Health Check| IGW
+    ALB2 -->|Health Check| IGW
+    IGW -->|Route Traffic| ALB1
+    IGW -->|Route Traffic| ALB2
+    
+    ALB1 -.->|Forward Request| EC2_1
+    ALB2 -.->|Forward Request| EC2_2
+    ALB1 -.->|Forward Request| EC2_2
+    ALB2 -.->|Forward Request| EC2_1
+    
+    EC2_1 -->|Query| RDS1
+    EC2_2 -->|Query| RDS1
+    RDS1 -.->|Replication| RDS2
+    
+    EC2_1 -->|Internet Access| NAT1
+    EC2_2 -->|Internet Access| NAT2
+    NAT1 -->|Route| IGW
+    NAT2 -->|Route| IGW
+    
+    EC2_1 -.->|Upload/Download| S3_Static
+    EC2_2 -.->|Upload/Download| S3_Static
+    EC2_1 -.->|Store Logs| S3_Logs
+    EC2_2 -.->|Store Logs| S3_Logs
+    
+    EC2_1 -.->|Send Metrics| CW
+    EC2_2 -.->|Send Metrics| CW
+    RDS1 -.->|Send Metrics| CW
+    ALB1 -.->|Send Metrics| CW
+    
+    ASG -->|Manage| EC2_1
+    ASG -->|Manage| EC2_2
+    CW -->|Trigger Scaling| ASG
+    
+    style U fill:#e1f5ff
+    style ALB1 fill:#ff9800
+    style ALB2 fill:#ff9800
+    style EC2_1 fill:#4caf50
+    style EC2_2 fill:#4caf50
+    style RDS1 fill:#2196f3
+    style RDS2 fill:#2196f3
+    style S3_Static fill:#9c27b0
+    style S3_Logs fill:#9c27b0
+    style CW fill:#f44336
+    style ASG fill:#f44336
+    style NAT1 fill:#ff5722
+    style NAT2 fill:#ff5722
+    style IGW fill:#607d8b
+
+
