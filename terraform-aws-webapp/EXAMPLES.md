@@ -1,72 +1,87 @@
-Usage Examples
+# Usage Examples
 This document provides practical examples for common use cases.
 
-📋 Table of Contents
-Basic Deployment
-Production Deployment
-Multi-Environment Setup
-Custom Configurations
-Advanced Scenarios
-Basic Deployment
-Minimal Configuration (Free Tier)
+## 📋 Table of Contents
+- Basic Deployment
+- Production Deployment
+- Multi-Environment Setup
+- Custom Configurations
+- Advanced Scenarios
+- Basic Deployment
+- Minimal Configuration (Free Tier)
 
-hcl
-# terraform.tfvars
+
+#### terraform.tfvars
+```
 aws_region   = "us-east-1"
 project_name = "myapp"
 environment  = "dev"
+```
 
-# Use free tier eligible resources
+#### Use free tier eligible resources
+```
 instance_type        = "t3.micro"
 db_instance_class    = "db.t3.micro"
 min_size             = 1
 max_size             = 2
 desired_capacity     = 1
 db_multi_az          = false
+```
 
-# Database credentials
-db_password = "YourSecurePassword123!"
-Deploy:
+#### Database credentials
+```db_password = "YourSecurePassword123!"```
 
+### Deploy:
 
-bash
+```
 terraform init
 terraform apply
-Production Deployment
-High Availability Setup
+```
 
-hcl
+### Production Deployment
+#### High Availability Setup
+
+```
 # terraform.tfvars
 aws_region   = "us-east-1"
 project_name = "myapp"
 environment  = "prod"
 owner        = "Platform-Team"
+```
 
-# Production-grade instances
+### Production-grade instances
+```
 instance_type        = "t3.medium"
 db_instance_class    = "db.t3.large"
+```
 
-# High availability
+### High availability
+```
 min_size             = 4
 max_size             = 10
 desired_capacity     = 4
 db_multi_az          = true
+```
 
-# Enhanced monitoring
+#### Enhanced monitoring
+```
 enable_detailed_monitoring = true
 enable_s3_versioning      = true
+```
 
-# Larger database
-db_allocated_storage = 100
+#### Larger database
+```db_allocated_storage = 100```
 
-# Alerting
+
+### Alerting
 alarm_email = "ops@company.com"
 
-# Strong password
-db_password = "SuperSecureProductionPassword123!@#"
-Multi-Environment Setup
-Directory Structure
+### Strong password
+```db_password = "SuperSecureProductionPassword123!@#"```
 
+### Multi-Environment Setup
+#### Directory Structure
+```
 terraform-aws-3tier-webapp/
 ├── environments/
 │   ├── dev/
@@ -79,10 +94,12 @@ terraform-aws-3tier-webapp/
 │       ├── terraform.tfvars
 │       └── backend.tf
 └── modules/
-Development Environment
+```
 
-hcl
-# environments/dev/terraform.tfvars
+### Development Environment
+
+##### environments/dev/terraform.tfvars
+```
 aws_region         = "us-east-1"
 project_name       = "myapp"
 environment        = "dev"
@@ -93,9 +110,9 @@ desired_capacity   = 1
 db_multi_az        = false
 db_password        = "DevPassword123!"
 Staging Environment
-
-hcl
-# environments/staging/terraform.tfvars
+```
+#### environments/staging/terraform.tfvars
+```
 aws_region         = "us-east-1"
 project_name       = "myapp"
 environment        = "staging"
@@ -106,9 +123,10 @@ desired_capacity   = 2
 db_multi_az        = true
 db_password        = "StagingPassword123!"
 Production Environment
+```
 
-hcl
-# environments/prod/terraform.tfvars
+#### environments/prod/terraform.tfvars
+```
 aws_region         = "us-east-1"
 project_name       = "myapp"
 environment        = "prod"
@@ -120,58 +138,74 @@ db_multi_az        = true
 enable_detailed_monitoring = true
 db_password        = "ProductionPassword123!@#"
 Deploy Specific Environment
+```
 
-bash
-# Deploy dev
+
+
+### Deploy dev
+
+```
 cd environments/dev
 terraform init
 terraform apply
+```
 
-# Deploy staging
+### Deploy staging
+```
 cd ../staging
 terraform init
 terraform apply
+```
 
-# Deploy prod
+### Deploy prod
+```
 cd ../prod
 terraform init
 terraform apply
-Custom Configurations
-Custom VPC CIDR Ranges
+```
 
-hcl
-# terraform.tfvars
+## Custom Configurations
+### Custom VPC CIDR Ranges
+#### terraform.tfvars
+```
 vpc_cidr              = "172.16.0.0/16"
 public_subnet_cidrs   = ["172.16.1.0/24", "172.16.2.0/24"]
 private_subnet_cidrs  = ["172.16.11.0/24", "172.16.12.0/24"]
 database_subnet_cidrs = ["172.16.21.0/24", "172.16.22.0/24"]
-PostgreSQL Database
+```
 
-hcl
-# terraform.tfvars
+### PostgreSQL Database
+
+
+#### terraform.tfvars
+```
 db_engine         = "postgres"
 db_engine_version = "15.3"
 db_name           = "myappdb"
 db_username       = "dbadmin"
 db_password       = "SecurePostgresPassword123!"
-Different AWS Region
+```
 
-hcl
-# terraform.tfvars
+### Different AWS Region
+#### terraform.tfvars
+```
 aws_region         = "eu-west-1"
 availability_zones = ["eu-west-1a", "eu-west-1b"]
-Larger Instance Types
+```
 
-hcl
-# terraform.tfvars
+### Larger Instance Types
+#### terraform.tfvars
+```
 instance_type     = "c5.xlarge"  # Compute optimized
 db_instance_class = "db.r5.large" # Memory optimized
-Advanced Scenarios
+```
+
+## Advanced Scenarios
 1. Using Existing VPC
 Modify main.tf to use data sources:
 
 
-hcl
+```
 # main.tf
 data "aws_vpc" "existing" {
   id = "vpc-12345678"
@@ -187,8 +221,10 @@ data "aws_subnets" "private" {
     Tier = "Private"
   }
 }
+```
 
-# Then pass to modules
+Then pass to modules
+```
 module "compute" {
   source = "./modules/compute"
   
@@ -196,9 +232,11 @@ module "compute" {
   private_subnet_ids = data.aws_subnets.private.ids
   # ... other variables
 }
+```
+
 2. Using Remote State
 
-hcl
+```
 # backend.tf
 terraform {
   backend "s3" {
@@ -209,14 +247,12 @@ terraform {
     dynamodb_table = "terraform-state-lock"
   }
 }
-Initialize with backend:
+```
 
+Initialize with backend: ```terraform init -backend-config="bucket=my-state-bucket"```
 
-bash
-terraform init -backend-config="bucket=my-state-bucket"
 3. Import Existing Resources
-
-bash
+```
 # Import existing VPC
 terraform import module.networking.aws_vpc.main vpc-12345678
 
@@ -225,9 +261,12 @@ terraform import module.database.aws_db_instance.main my-db-instance
 
 # Import existing ALB
 terraform import module.compute.aws_lb.main arn:aws:elasticloadbalancing:...
+```
+
+
 4. Workspace-Based Environments
 
-bash
+```
 # Create workspaces
 terraform workspace new dev
 terraform workspace new staging
@@ -238,9 +277,11 @@ terraform workspace select dev
 
 # Deploy to current workspace
 terraform apply -var-file="environments/${terraform.workspace}.tfvars"
+```
+
 5. Conditional Resources
 
-hcl
+```
 # variables.tf
 variable "enable_bastion" {
   description = "Enable bastion host for SSH access"
@@ -257,9 +298,11 @@ resource "aws_instance" "bastion" {
   subnet_id     = var.public_subnet_ids[0]
   # ... other configuration
 }
+```
+
 6. Custom User Data Script
 
-hcl
+```
 # main.tf
 module "compute" {
   source = "./modules/compute"
@@ -270,9 +313,11 @@ module "compute" {
   
   # ... other variables
 }
+```
+
 7. Blue/Green Deployment
 
-bash
+```
 # Create new launch template version
 terraform apply -target=module.compute.aws_launch_template.main
 
@@ -284,10 +329,14 @@ aws autoscaling start-instance-refresh \
 # Monitor progress
 aws autoscaling describe-instance-refreshes \
   --auto-scaling-group-name $(terraform output -raw autoscaling_group_name)
-Testing Examples
+
+```
+
+## Testing Examples
+
 1. Test Application Endpoint
 
-bash
+```
 # Get ALB URL
 APP_URL=$(terraform output -raw application_url)
 
@@ -296,9 +345,11 @@ curl -I $APP_URL
 
 # Load test
 ab -n 1000 -c 10 $APP_URL/
+```
+
 2. Test Database Connection
 
-bash
+```
 # Get DB endpoint
 DB_ENDPOINT=$(terraform output -raw database_endpoint | cut -d: -f1)
 
@@ -310,22 +361,28 @@ aws ssm start-session --target $(aws ec2 describe-instances \
 
 # Inside instance
 mysql -h $DB_ENDPOINT -u admin -p
+```
+
 3. Test Auto Scaling
 
-bash
+```
 # Generate load
 for i in {1..1000}; do
   curl $APP_URL > /dev/null 2>&1 &
 done
+```
 
-# Watch instances scale
+## Watch instances scale
+```
 watch -n 5 'aws autoscaling describe-auto-scaling-groups \
   --auto-scaling-group-names $(terraform output -raw autoscaling_group_name) \
   --query "AutoScalingGroups[0].Instances[*].[InstanceId,HealthStatus,LifecycleState]" \
   --output table'
-Common Commands
+```
 
-bash
+## Common Commands
+
+```
 # Show all outputs
 terraform output
 
@@ -346,10 +403,12 @@ terraform state list
 
 # Move resource in state
 terraform state mv module.old module.new
-Troubleshooting Examples
-Check Resource Status
+```
 
-bash
+## Troubleshooting Examples
+### Check Resource Status
+
+```
 # EC2 instances
 aws ec2 describe-instances \
   --filters "Name=tag:Project,Values=myapp" \
@@ -364,9 +423,11 @@ aws elbv2 describe-target-health \
 aws rds describe-db-instances \
   --db-instance-identifier $(terraform output -raw database_name) \
   --query 'DBInstances[0].[DBInstanceStatus,Endpoint.Address]'
-View Logs
+```
 
-bash
+## View Logs
+
+```
 # CloudWatch Logs
 aws logs tail /aws/ec2/myapp-dev/apache/error --follow
 
@@ -375,7 +436,6 @@ aws ssm send-command \
   --document-name "AWS-RunShellScript" \
   --targets "Key=tag:Project,Values=myapp" \
   --parameters 'commands=["cat /var/log/user-data.log"]'
+```
+
 For more examples, check the GitHub repository or open an issue!
-
-
-Copied from: Github portfolio for DevOps engineer - Claude - <https://claude.ai/chat/f196fbbf-3a52-4f95-bb9b-bcdec8f3e31f>
