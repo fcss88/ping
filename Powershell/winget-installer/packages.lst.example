@@ -1,0 +1,133 @@
+# === Browsers ===
+Google.Chrome
+Mozilla.Firefox
+Brave.Brave
+Opera.Opera
+
+# === Development IDEs & Editors ===
+Microsoft.VisualStudioCode
+Notepad++.Notepad++
+JetBrains.IntelliJIDEA.Community
+JetBrains.PyCharm.Community
+JetBrains.WebStorm
+JetBrains.DataGrip
+
+# === Version Control ===
+Git.Git
+GitHub.GitHubDesktop
+TortoiseGit.TortoiseGit
+
+# === Containers & Virtualization ===
+Docker.DockerDesktop
+Oracle.VirtualBox
+VMware.WorkstationPlayer
+
+# === Cloud & DevOps ===
+Amazon.AWSCLI
+Amazon.SessionManagerPlugin
+Microsoft.AzureCLI
+Hashicorp.Terraform
+Hashicorp.Vault
+Kubernetes.kubectl
+Helm.Helm
+RedHat.Podman
+
+# === Networking Tools ===
+WiresharkFoundation.Wireshark
+PuTTY.PuTTY
+Termius.Termius
+MobaXterm.MobaXterm
+WinSCP.WinSCP
+
+# === Terminal & Shell ===
+Microsoft.WindowsTerminal
+JanDeDobbeleer.OhMyPosh
+Starship.Starship
+PowerShell.PowerShell
+
+# === System Utilities ===
+7zip.7zip
+RARLab.WinRAR
+BleachBit.BleachBit
+Sysinternals.SysinternalsSuite
+CCleaner.CCleaner
+
+# === Monitoring & Diagnostics ===
+CPUID.HWMonitor
+OpenHardwareMonitor.OpenHardwareMonitor
+CrystalDewWorld.CrystalDiskInfo
+CrystalDewWorld.CrystalDiskMark
+
+# === Database Tools ===
+PostgreSQL.PostgreSQL
+MySQL.MySQLServer
+MariaDB.Server
+MongoDB.Compass.Full
+DBeaver.DBeaver
+HeidiSQL.HeidiSQL
+
+# === API & Testing ===
+Postman.Postman
+Insomnia.Insomnia
+
+# === Communication ===
+Discord.Discord
+SlackTechnologies.Slack
+Telegram.TelegramDesktop
+Zoom.Zoom
+
+# === File Management ===
+voidtools.Everything
+Q-Dir.Q-Dir
+TotalCommander.Ghisler
+
+# === Media ===
+VideoLAN.VLC
+Spotify.Spotify
+Audacity.Audacity
+OBSProject.OBSStudio
+
+# === PDF & Office ===
+SumatraPDF.SumatraPDF
+Adobe.Acrobat.Reader.64-bit
+TheDocumentFoundation.LibreOffice
+
+# === Security ===
+Malwarebytes.Malwarebytes
+Bitwarden.Bitwarden
+KeePass.KeePass
+
+# === Build & Languages ===
+Python.Python.3
+OpenJS.NodeJS
+GoLang.Go
+AdoptOpenJDK.OpenJDK.17
+Rustlang.Rustup
+
+# === Misc Dev Tools ===
+Microsoft.PowerToys
+WinMerge.WinMerge
+Fiddler.Fiddler
+SourceFoundry.HackFonts
+
+# === Remote & Support ===
+AnyDeskSoftwareGmbH.AnyDesk
+TeamViewer.TeamViewer
+RustDesk.RustDesk
+
+# === Backup & Imaging ===
+Macrium.Reflect.Free
+AOMEI.Backupper.Standard
+
+# === Compression & Archiving ===
+PeaZip.PeaZip
+Bandisoft.Bandizip
+
+# === Browsing Dev Tools ===
+Google.Chrome.Dev
+Mozilla.Firefox.DeveloperEdition
+
+# === Diagramming & Docs ===
+drawio.drawio
+Notion.Notion
+Obsidian.Obsidian
