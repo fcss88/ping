@@ -26,13 +26,13 @@ Timestamped history list
 Can be compiled into a single portable EXE
 
 ### 🖥️ Screenshots
-![screen1](https://github.com/screen1.png)
+![screen1](https://raw.githubusercontent.com/fcss88/ping/refs/heads/main/Powershell/Test-NetConnection-GUI/screen1.png)
 
-![screen2](https://github.com/screen2.png)
+![screen2](https://raw.githubusercontent.com/fcss88/ping/refs/heads/main/Powershell/Test-NetConnection-GUI/screen2.png)
 
-![screen3](https://github.com/screen3.png)
+![screen3](https://raw.githubusercontent.com/fcss88/ping/refs/heads/main/Powershell/Test-NetConnection-GUI/screen3.png)
 
-![screen4](https://github.com/screen4.png)
+![screen4](https://raw.githubusercontent.com/fcss88/ping/refs/heads/main/Powershell/Test-NetConnection-GUI/screen4.png)
 
 ### 📁 Project Structure
 ```
