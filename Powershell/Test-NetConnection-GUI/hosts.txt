@@ -1,0 +1,12 @@
+google.com:443
+google.com:80
+google.com:442
+fcss88.pp.ua:443
+192.168.88.1:80
+192.168.88.1:443
+ukr.net:443
+ukr.net:80
+2ip.ua:443
+itca.if.ua:443
+if.gov.ua:5432
+dou.ua:443
